@@ -1,0 +1,37 @@
+README
+Andrew Dieken
+dieke102@mail.chapman.edu
+1968999
+CPSC 236 Final Project
+
+1) DDL for Database
+
+CREATE TABLE StudentAthlete(
+  StudentID INT AUTO_INCREMENT,
+  FirstName VARCHAR(20),
+  LastName VARCHAR(20),
+  Status VARCHAR(20),
+  PRIMARY KEY (StudentID)
+);
+
+CREATE TABLE MaxRecords(
+  sid INT,
+  Year VARCHAR(20),
+  Term VARCHAR(20),
+  Bench INT,
+  Clean INT,
+  Squat INT,
+  FOREIGN KEY (sid) REFERENCES StudentAthlete(StudentID)
+);
+
+CREATE TABLE GameStats(
+  sid INT,
+  Stats JSON,
+  FOREIGN KEY (sid) REFERENCES StudentAthlete(StudentID)
+);
+
+CREATE TABLE Positions(
+  sid INT,
+  Position VARCHAR(20),
+  FOREIGN KEY (sid) REFERENCES StudentAthlete(StudentID)
+);
